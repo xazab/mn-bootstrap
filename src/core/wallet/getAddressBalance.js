@@ -1,4 +1,4 @@
-const { toDash } = require('../../util/satoshiConverter');
+const { toXazab } = require('../../util/satoshiConverter');
 
 /**
  * Get balance of the address
@@ -13,7 +13,7 @@ async function getAddressBalance(coreService, address) {
     addresses: [address],
   });
 
-  return toDash(balance);
+  return toXazab(balance);
 }
 
 module.exports = getAddressBalance;

@@ -37,9 +37,9 @@ class CoreStatusCommand extends BaseCommand {
     );
 
     const insightURLs = {
-      evonet: 'http://insight.evonet.networks.dash.org:3001/insight-api',
-      testnet: 'https://testnet-insight.dashevo.org/insight-api',
-      mainnet: 'https://insight.dash.org/insight-api',
+      evonet: 'http://insight.evonet.xazab.xyz/insight-api',
+      testnet: 'https://testnet.xazab.xyz/insight-api',
+      mainnet: 'https://insight.xazab.xyz/insight-api',
     };
 
     // Collect data
@@ -55,14 +55,14 @@ class CoreStatusCommand extends BaseCommand {
     const { result: networkInfo } = await coreService.getRpcClient().getNetworkInfo();
     const { result: mnsyncStatus } = await coreService.getRpcClient().mnsync('status');
     const { result: peerInfo } = await coreService.getRpcClient().getPeerInfo();
-    const latestVersionRes = await fetch('https://api.github.com/repos/dashpay/dash/releases/latest');
+    const latestVersionRes = await fetch('https://api.github.com/repos/xazab/xazab/releases/latest');
     let {
       tag_name: latestVersion,
     } = await latestVersionRes.json();
     latestVersion = latestVersion.substring(1);
     const corePortStateRes = await fetch(`https://mnowatch.org/${config.options.core.p2p.port}/`);
     let corePortState = await corePortStateRes.text();
-    let coreVersion = networkInfo.subversion.replace(/\/|\(.*?\)|Dash Core:/g, '');
+    let coreVersion = networkInfo.subversion.replace(/\/|\(.*?\)|Xazab Core:/g, '');
     let explorerBlockHeightRes;
     let explorerBlockHeight;
     if (insightURLs[config.options.network]) {
@@ -77,7 +77,7 @@ class CoreStatusCommand extends BaseCommand {
       config.toEnvs(),
       'sentinel',
       'python bin/sentinel.py -v',
-    )).out.split('\n')[0].replace(/Dash Sentinel v/, '');
+    )).out.split('\n')[0].replace(/Xazab Sentinel v/, '');
     let sentinelState = (await dockerCompose.execCommand(
       config.toEnvs(),
       'sentinel',

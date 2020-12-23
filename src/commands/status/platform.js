@@ -53,7 +53,7 @@ class CoreStatusCommand extends BaseCommand {
       },
     } = await coreService.getRpcClient().mnsync('status');
 
-    // Collecting platform data fails if Tenderdash is waiting for core to sync
+    // Collecting platform data fails if Tenderxazab is waiting for core to sync
     if (coreIsSynced === false) {
       // eslint-disable-next-line no-console
       console.log('Platform status is not available until core sync is complete!');
@@ -157,7 +157,7 @@ class CoreStatusCommand extends BaseCommand {
     }
 
     // Build table
-    rows.push(['Tenderdash Version', platformVersion]);
+    rows.push(['Tenderxazab Version', platformVersion]);
     rows.push(['Network', platformNetwork]);
     rows.push(['Status', status]);
     rows.push(['Block height', blocks]);

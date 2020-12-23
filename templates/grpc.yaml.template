@@ -19,15 +19,15 @@ static_resources:
             - name: dapi_services
               domains: ["*"]
               routes:
-                - match: { prefix: "/org.dash.platform.dapi.v0.Core/subscribeToTransactionsWithProofs" }
+                - match: { prefix: "/org.xazab.platform.dapi.v0.Core/subscribeToTransactionsWithProofs" }
                   route:
                     cluster: tx_filter_stream
                     max_grpc_timeout: 0s
-                - match: { prefix: "/org.dash.platform.dapi.v0.Core" }
+                - match: { prefix: "/org.xazab.platform.dapi.v0.Core" }
                   route:
                     cluster: core_and_platform
                     max_grpc_timeout: 0s
-                - match: { prefix: "/org.dash.platform.dapi.v0.Platform" }
+                - match: { prefix: "/org.xazab.platform.dapi.v0.Platform" }
                   route:
                     cluster: core_and_platform
                     max_grpc_timeout: 0s

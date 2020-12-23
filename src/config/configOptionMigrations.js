@@ -5,8 +5,8 @@ const systemConfigs = require('./systemConfigs/systemConfigs');
 
 module.exports = {
   '0.17.0-dev.12': (name, options) => {
-    // Rename tendermint to tenderdash
-    lodashSet(options, 'platform.drive.tenderdash', options.platform.drive.tendermint);
+    // Rename tendermint to tenderxazab
+    lodashSet(options, 'platform.drive.tenderxazab', options.platform.drive.tendermint);
     // eslint-disable-next-line no-param-reassign
     delete options.platform.drive.tendermint;
 
@@ -16,8 +16,8 @@ module.exports = {
       'platform.dapi.nginx.rateLimiter.enable',
       'platform.dapi.nginx.rateLimiter.burst',
       'platform.dapi.nginx.rateLimiter.rate',
-      'platform.drive.tenderdash.validatorKey',
-      'platform.drive.tenderdash.nodeKey',
+      'platform.drive.tenderxazab.validatorKey',
+      'platform.drive.tenderxazab.nodeKey',
     ];
 
     paths.forEach((path) => {

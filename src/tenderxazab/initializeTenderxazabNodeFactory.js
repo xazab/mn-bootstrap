@@ -5,21 +5,21 @@ const { WritableStream } = require('memory-streams');
  * @param {DockerCompose} dockerCompose
  * @param {Docker} docker
  * @param {dockerPull} dockerPull
- * @return {initializeTenderdashNode}
+ * @return {initializeTenderxazabNode}
  */
-function initializeTenderdashNodeFactory(dockerCompose, docker, dockerPull) {
+function initializeTenderxazabNodeFactory(dockerCompose, docker, dockerPull) {
   /**
-   * @typedef {initializeTenderdashNode}
+   * @typedef {initializeTenderxazabNode}
    * @param {Config} config
    * @return {Promise<Object>}
    */
-  async function initializeTenderdashNode(config) {
-    if (await dockerCompose.isServiceRunning(config.toEnvs(), 'drive_tenderdash')) {
-      throw new Error('Can\'t initialize Tenderdash. Already running.');
+  async function initializeTenderxazabNode(config) {
+    if (await dockerCompose.isServiceRunning(config.toEnvs(), 'drive_tenderxazab')) {
+      throw new Error('Can\'t initialize Tenderxazab. Already running.');
     }
 
     const { COMPOSE_PROJECT_NAME: composeProjectName } = config.toEnvs();
-    const volumeName = 'drive_tenderdash';
+    const volumeName = 'drive_tenderxazab';
     const volumeNameFullName = `${composeProjectName}_${volumeName}`;
 
     const volume = docker.getVolume(volumeNameFullName);
@@ -29,7 +29,7 @@ function initializeTenderdashNodeFactory(dockerCompose, docker, dockerPull) {
       .catch(() => false);
 
     if (!isVolumeDefined) {
-      // Create volume with tenderdash data
+      // Create volume with tenderxazab data
       await docker.createVolume({
         Name: volumeNameFullName,
         Labels: {
@@ -40,16 +40,16 @@ function initializeTenderdashNodeFactory(dockerCompose, docker, dockerPull) {
       });
     }
 
-    // Initialize Tenderdash
+    // Initialize Tenderxazab
 
-    const tenderdashImage = config.get('platform.drive.tenderdash.docker.image', true);
+    const tenderxazabImage = config.get('platform.drive.tenderxazab.docker.image', true);
 
-    await dockerPull(tenderdashImage);
+    await dockerPull(tenderxazabImage);
 
     const writableStream = new WritableStream();
 
     const command = [
-      '/usr/bin/tenderdash init > /dev/null',
+      '/usr/bin/tenderxazab init > /dev/null',
       'echo "["',
       'cat $TMHOME/config/priv_validator_key.json',
       'echo ","',
@@ -61,14 +61,14 @@ function initializeTenderdashNodeFactory(dockerCompose, docker, dockerPull) {
     ].join('&&');
 
     const [result] = await docker.run(
-      tenderdashImage,
+      tenderxazabImage,
       [],
       writableStream,
       {
         Entrypoint: ['sh', '-c', command],
         HostConfig: {
           AutoRemove: true,
-          Binds: [`${volumeNameFullName}:/tenderdash`],
+          Binds: [`${volumeNameFullName}:/tenderxazab`],
         },
       },
     );
@@ -80,13 +80,13 @@ function initializeTenderdashNodeFactory(dockerCompose, docker, dockerPull) {
         message = 'already initialized. Please reset node data';
       }
 
-      throw new Error(`Can't initialize tenderdash: ${message}`);
+      throw new Error(`Can't initialize tenderxazab: ${message}`);
     }
 
     return JSON.parse(writableStream.toString());
   }
 
-  return initializeTenderdashNode;
+  return initializeTenderxazabNode;
 }
 
-module.exports = initializeTenderdashNodeFactory;
+module.exports = initializeTenderxazabNodeFactory;

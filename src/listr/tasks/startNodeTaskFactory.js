@@ -1,6 +1,6 @@
 const { Listr } = require('listr2');
 
-const { PrivateKey } = require('@dashevo/dashcore-lib');
+const { PrivateKey } = require('@xazab/xazabcore-lib');
 
 const NETWORKS = require('../../networks');
 
@@ -106,7 +106,7 @@ function startNodeTaskFactory(dockerCompose) {
             [
               'bash',
               '-c',
-              `while true; do dash-cli generatetoaddress 1 ${minerAddress}; sleep ${minerInterval}; done`,
+              `while true; do xazab-cli generatetoaddress 1 ${minerAddress}; sleep ${minerInterval}; done`,
             ],
             ['--detach'],
           );

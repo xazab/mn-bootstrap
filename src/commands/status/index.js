@@ -51,7 +51,7 @@ class StatusCommand extends BaseCommand {
         subversion: coreVersion,
       },
     } = await coreService.getRpcClient().getNetworkInfo();
-    coreVersion = coreVersion.replace(/\/|\(.*?\)|Dash Core:/g, '');
+    coreVersion = coreVersion.replace(/\/|\(.*?\)|Xazab Core:/g, '');
 
     const {
       result: {
@@ -83,7 +83,7 @@ class StatusCommand extends BaseCommand {
     let platformVersion;
     let platformBlockHeight;
     let platformCatchingUp;
-    // Collecting platform data fails if Tenderdash is waiting for core to sync
+    // Collecting platform data fails if Tenderxazab is waiting for core to sync
     if (config.options.network !== 'testnet' && coreIsSynced === true) {
       const platformStatusRes = await fetch(`http://localhost:${config.options.platform.drive.tendermint.rpc.port}/status`);
       ({

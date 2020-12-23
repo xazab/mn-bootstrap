@@ -51,7 +51,7 @@ function generateToAddressTaskFactory(
         options: { persistentOutput: true },
       },
       {
-        title: `Generate ≈${amount} dash to address`,
+        title: `Generate ≈${amount} xazab to address`,
         task: (ctx, task) => (
           new Observable(async (observer) => {
             await generateToAddress(
@@ -60,12 +60,12 @@ function generateToAddressTaskFactory(
               ctx.address,
               (balance) => {
                 ctx.balance = balance;
-                observer.next(`${balance} dash generated`);
+                observer.next(`${balance} xazab generated`);
               },
             );
 
             // eslint-disable-next-line no-param-reassign
-            task.output = `Generated ${ctx.balance} dash`;
+            task.output = `Generated ${ctx.balance} xazab`;
 
             // Set for further tasks
             ctx.fundingAddress = ctx.address;

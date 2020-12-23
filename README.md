@@ -1,10 +1,10 @@
 # MN Bootstrap
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/dashevo/mn-bootstrap)](https://github.com/dashevo/mn-bootstrap/releases)
-[![Release Date](https://img.shields.io/github/release-date/dashevo/mn-bootstrap)](https://github.com/dashevo/mn-bootstrap/releases/latest)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xazab/mn-bootstrap)](https://github.com/xazab/mn-bootstrap/releases)
+[![Release Date](https://img.shields.io/github/release-date/xazab/mn-bootstrap)](https://github.com/xazab/mn-bootstrap/releases/latest)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
-Distribution package for Dash Masternode installation
+Distribution package for Xazab Masternode installation
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ For Linux installations you may optionally wish to follow the [post-installation
 ### Distribution package
 
 ```bash
-$ git clone -b master https://github.com/dashevo/mn-bootstrap.git
+$ git clone -b master https://github.com/xazab/mn-bootstrap.git
 $ cd mn-bootstrap
 $ npm install # optional: install CLI dependencies
 $ sudo npm link # optional: link CLI for system-wide execution
@@ -143,7 +143,7 @@ The `register` command creates a collateral funding transaction and then uses it
 
 #### Funding collateral
 
-Before registering the masternode, you must have access to an address on the network you intend to use with a balance of more than 1000 Dash. 1000 Dash is used for the collateral transaction, and the remainder will be used for transaction fees. Make sure you have access to the private key for this address, since you will need to provide it in the next step. If using Dash Core, you can get the private key for a given address using the following command:
+Before registering the masternode, you must have access to an address on the network you intend to use with a balance of more than 1000 Xazab. 1000 Xazab is used for the collateral transaction, and the remainder will be used for transaction fees. Make sure you have access to the private key for this address, since you will need to provide it in the next step. If using Xazab Core, you can get the private key for a given address using the following command:
 
 ```
 dumpprivkey "address"
@@ -155,26 +155,26 @@ If using a config specifying the `local` network, you can create and fund a new 
 USAGE
   $ mn wallet:mint AMOUNT
 ARGUMENTS
-  AMOUNT  amount of dash to be generated to address
+  AMOUNT  amount of xazab to be generated to address
 OPTIONS
   -a, --address=address  recipient address instead of a new one
   --config=config        configuration name to use
 ```
 
-To generate 1001 Dash to a new address:
+To generate 1001 Xazab to a new address:
 ```bash
 mn wallet:mint 1001
 ```
 
 #### Masternode registration
 
-Run the `register` command as described below. The command will first verify sufficient balance on the funding address from the previous step. It will then generate new addresses for the collateral, owner and operator and display the addresses and associated private keys as output. The collateral of exactly 1000 Dash will be sent from the funding address to the collateral address, and after 15 blocks have been mined, the registration transaction will be broadcast on the network. Assuming a properly configured and running masternode exists at the specified IP address and port, it should become active after the registration transaction has been mined to a block on the network.
+Run the `register` command as described below. The command will first verify sufficient balance on the funding address from the previous step. It will then generate new addresses for the collateral, owner and operator and display the addresses and associated private keys as output. The collateral of exactly 1000 Xazab will be sent from the funding address to the collateral address, and after 15 blocks have been mined, the registration transaction will be broadcast on the network. Assuming a properly configured and running masternode exists at the specified IP address and port, it should become active after the registration transaction has been mined to a block on the network.
 
 ```
 USAGE
   $ mn register FUNDING-PRIVATE-KEY
 ARGUMENTS
-  FUNDING-PRIVATE-KEY  private key with more than 1000 dash for funding collateral
+  FUNDING-PRIVATE-KEY  private key with more than 1000 Xazab for funding collateral
 OPTIONS
   --config=config  configuration name to use
 ```
@@ -229,7 +229,7 @@ mn config:set core.masternode.enable false
 
 ### Development
 
-When developing on a standalone node (a config specifying the `local` network), `setup-for-local-development` can be used to generate some dash, register a masternode and populate the node with the data required for local development.
+When developing on a standalone node (a config specifying the `local` network), `setup-for-local-development` can be used to generate some xazab, register a masternode and populate the node with the data required for local development.
 
 To allow developers quickly test changes to DAPI and Drive, a local path for DAPI or Drive may be specified via the `--drive-image-build-path` and `--dapi-image-build-path` options of the `start` command. A Docker image will be built from the provided path and then used by mn-bootstrap.
 
@@ -249,7 +249,7 @@ $ docker-compose --env-file=<filename>
 
 ## Contributing
 
-Feel free to dive in! [Open an issue](https://github.com/dashevo/mn-bootstrap/issues/new) or submit PRs.
+Feel free to dive in! [Open an issue](https://github.com/xazab/mn-bootstrap/issues/new) or submit PRs.
 
 ## License
 

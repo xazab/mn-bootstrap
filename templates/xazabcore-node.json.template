@@ -2,12 +2,12 @@
   "network": "testnet",
   "port": 3001,
   "services": [
-    "dashd",
-    "@dashevo/insight-api",
+    "xazabd",
+    "@xazab/insight-api",
     "web"
   ],
   "servicesConfig": {
-    "dashd": {
+    "xazabd": {
       "connect": [{
         "rpchost": "core",
         "rpcport": {{=it.core.rpc.port}},
@@ -17,7 +17,7 @@
         "zmqpubhashblock": "tcp://core:29998"
       }]
     },
-    "@dashevo/insight-api": {
+    "@xazab/insight-api": {
       "disableRateLimiter": true
     }
   }

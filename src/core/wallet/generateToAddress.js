@@ -1,4 +1,4 @@
-const { toDash } = require('../../util/satoshiConverter');
+const { toXazab } = require('../../util/satoshiConverter');
 
 /**
  *
@@ -24,7 +24,7 @@ async function generateToAddress(
       addresses: [address],
     });
 
-    addressBalance = toDash(balance);
+    addressBalance = toXazab(balance);
 
     await progressCallback(addressBalance);
   } while (addressBalance < amount);

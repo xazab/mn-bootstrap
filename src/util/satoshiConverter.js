@@ -1,28 +1,28 @@
 const SATOSHI_MULTIPLIER = 10 ** 8;
 
 /**
- * Convert satoshis to Dash
+ * Convert satoshis to Xazab
  *
  * @param {number} satoshi
  *
  * @returns {number}
  */
-function toDash(satoshi) {
+function toXazab(satoshi) {
   return satoshi / SATOSHI_MULTIPLIER;
 }
 
 /**
- * Convert dash to satoshis
+ * Convert Xazab to satoshis
  *
- * @param {number} dash
+ * @param {number} Xazab
  *
  * @return {number}
  */
-function toSatoshi(dash) {
-  return dash * SATOSHI_MULTIPLIER;
+function toSatoshi(xazab) {
+  return xazab * SATOSHI_MULTIPLIER;
 }
 
 module.exports = {
-  toDash,
+  toXazab,
   toSatoshi,
 };

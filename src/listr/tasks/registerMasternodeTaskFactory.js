@@ -4,7 +4,7 @@ const { Observable } = require('rxjs');
 
 const NETWORKS = require('../../networks');
 
-const masternodeDashAmount = require('../../core/masternodeDashAmount');
+const masternodeXazabAmount = require('../../core/masternodeXazabAmount');
 
 /**
  *
@@ -66,8 +66,8 @@ function registerMasternodeTaskFactory(
         title: 'Check funding address balance',
         task: async (ctx) => {
           const balance = await getAddressBalance(ctx.coreService, ctx.fundingAddress);
-          if (balance <= masternodeDashAmount) {
-            throw new Error(`You need to have more than ${masternodeDashAmount} Dash on your funding address`);
+          if (balance <= masternodeXazabAmount) {
+            throw new Error(`You need to have more than ${masternodeXazabAmount} Xazab on your funding address`);
           }
         },
       },
@@ -104,14 +104,14 @@ function registerMasternodeTaskFactory(
         options: { persistentOutput: true },
       },
       {
-        title: `Send ${masternodeDashAmount} dash from funding address to collateral address`,
+        title: `Send ${masternodeXazabAmount} xazab from funding address to collateral address`,
         task: async (ctx, task) => {
           ctx.collateralTxId = await sendToAddress(
             ctx.coreService,
             ctx.fundingPrivateKeyString,
             ctx.fundingAddress,
             ctx.collateral.address,
-            masternodeDashAmount,
+            masternodeXazabAmount,
           );
 
           // eslint-disable-next-line no-param-reassign

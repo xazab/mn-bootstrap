@@ -2,12 +2,12 @@ const { Listr } = require('listr2');
 
 const { flags: flagTypes } = require('@oclif/command');
 
-const { PrivateKey } = require('@dashevo/dashcore-lib');
+const { PrivateKey } = require('@xazab/xazabcore-lib');
 
 const BaseCommand = require('../oclif/command/BaseCommand');
 const MuteOneLineError = require('../oclif/errors/MuteOneLineError');
 
-const masternodeDashAmount = require('../core/masternodeDashAmount');
+const masternodeXazabAmount = require('../core/masternodeXazabAmount');
 
 class RegisterCommand extends BaseCommand {
   /**
@@ -70,7 +70,7 @@ Register masternode and set operator private key in config
 RegisterCommand.args = [{
   name: 'funding-private-key',
   required: true,
-  description: `private key with more than ${masternodeDashAmount} dash for funding collateral`,
+  description: `private key with more than ${masternodeXazabAmount} xazab for funding collateral`,
 }];
 
 RegisterCommand.flags = {

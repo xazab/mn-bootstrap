@@ -57,13 +57,13 @@ class InitCommand extends BaseCommand {
 
 InitCommand.description = `Initialize platform
 ...
-Register DPNS Contract and "dash" top-level domain
+Register DPNS Contract and "xazab" top-level domain
 `;
 
 InitCommand.args = [{
   name: 'funding-private-key',
   required: true,
-  description: 'private key with dash for funding account',
+  description: 'private key with xazab for funding account',
 },
 {
   name: 'dapi-address',

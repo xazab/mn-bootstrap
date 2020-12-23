@@ -1,15 +1,15 @@
-const { Transaction } = require('@dashevo/dashcore-lib');
+const { Transaction } = require('@xazab/xazabcore-lib');
 const { toSatoshi } = require('../../util/satoshiConverter');
 
 /**
- * Send Dash to address
+ * Send xazab to address
  *
  * @typedef {sendToAddress}
  * @param {CoreService} coreService
  * @param {string} fundSourcePrivateKey
  * @param {string} fundSourceAddress
  * @param {string} address
- * @param {number} amount Amount in dash
+ * @param {number} amount Amount in xazab
  * @return {Promise<string>}
  */
 async function sendToAddress(

@@ -47,8 +47,8 @@ const registerMasternodeTaskFactory = require('./listr/tasks/registerMasternodeT
 const initTaskFactory = require('./listr/tasks/platform/initTaskFactory');
 const startNodeTaskFactory = require('./listr/tasks/startNodeTaskFactory');
 
-const createTenderdashRpcClient = require('./tenderdash/createTenderdashRpcClient');
-const initializeTenderdashNodeFactory = require('./tenderdash/initializeTenderdashNodeFactory');
+const createTenderxazabRpcClient = require('./tenderxazab/createTenderxazabRpcClient');
+const initializeTenderxazabNodeFactory = require('./tenderxazab/initializeTenderxazabNodeFactory');
 
 async function createDIContainer(options) {
   const container = createAwilixContainer({
@@ -122,11 +122,11 @@ async function createDIContainer(options) {
   });
 
   /**
-   * Tenderdash
+   * Tenderxazab
    */
   container.register({
-    createTenderdashRpcClient: asValue(createTenderdashRpcClient),
-    initializeTenderdashNode: asFunction(initializeTenderdashNodeFactory),
+    createTenderxazabRpcClient: asValue(createTenderxazabRpcClient),
+    initializeTenderxazabNode: asFunction(initializeTenderxazabNodeFactory),
   });
 
   /**

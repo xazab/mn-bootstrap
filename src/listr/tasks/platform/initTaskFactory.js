@@ -1,13 +1,13 @@
 const { Listr } = require('listr2');
 
-const Dash = require('dash');
+const Xazab = require('xazab');
 
 const crypto = require('crypto');
 
-const fundWallet = require('@dashevo/wallet-lib/src/utils/fundWallet');
+const fundWallet = require('@xazab/wallet-lib/src/utils/fundWallet');
 
-const dpnsDocumentSchema = require('@dashevo/dpns-contract/schema/dpns-contract-documents.json');
-const dashpayDocumentSchema = require('@dashevo/dashpay-contract/schema/dashpay.schema.json');
+const dpnsDocumentSchema = require('@xazab/dpns-contract/schema/dpns-contract-documents.json');
+const xazabDocumentSchema = require('@xazab/xazab-contract/schema/xazab.schema.json');
 
 const NETWORKS = require('../../../networks');
 
@@ -16,7 +16,7 @@ const NETWORKS = require('../../../networks');
  * @return {initTask}
  */
 function initTaskFactory(
-  createTenderdashRpcClient,
+  createTenderxazabRpcClient,
 ) {
   /**
    * @typedef {initTask}
@@ -50,14 +50,14 @@ function initTaskFactory(
             clientOpts.dapiAddresses = [ctx.dapiAddress];
           }
 
-          const faucetClient = new Dash.Client({
+          const faucetClient = new Xazab.Client({
             ...clientOpts,
             wallet: {
               privateKey: ctx.fundingPrivateKeyString,
             },
           });
 
-          ctx.client = new Dash.Client({
+          ctx.client = new Xazab.Client({
             ...clientOpts,
             wallet: {
               mnemonic: null,
@@ -122,11 +122,11 @@ function initTaskFactory(
             return;
           }
 
-          const tenderdashRpcClient = createTenderdashRpcClient();
+          const tenderxazabRpcClient = createTenderxazabRpcClient();
 
           const params = { hash: stateTransitionHash.toString('base64') };
 
-          const response = await tenderdashRpcClient.request('tx', params);
+          const response = await tenderxazabRpcClient.request('tx', params);
 
           if (response.error) {
             throw new Error(`Tendermint error: ${response.error.message}: ${response.error.data}`);
@@ -142,33 +142,33 @@ function initTaskFactory(
         options: { persistentOutput: true },
       },
       {
-        title: 'Register top level domain "dash"',
+        title: 'Register top level domain "xazab"',
         task: async (ctx) => {
           ctx.client.getApps().set('dpns', {
             contractId: ctx.dataContract.getId(),
             contract: ctx.dataContract,
           });
 
-          await ctx.client.platform.names.register('dash', {
-            dashAliasIdentityId: ctx.identity.getId(),
+          await ctx.client.platform.names.register('xazab', {
+            xazabAliasIdentityId: ctx.identity.getId(),
           }, ctx.identity);
         },
       },
       {
-        title: 'Register identity for Dashpay',
+        title: 'Register identity for Xazab',
         task: async (ctx, task) => {
           ctx.identity = await ctx.client.platform.identities.register(5);
 
           // eslint-disable-next-line no-param-reassign
-          task.output = `Dashpay's owner identity: ${ctx.identity.getId()}`;
+          task.output = `Xazab's owner identity: ${ctx.identity.getId()}`;
         },
         options: { persistentOutput: true },
       },
       {
-        title: 'Register Dashpay Contract',
+        title: 'Register Xazab Contract',
         task: async (ctx, task) => {
           ctx.dataContract = await ctx.client.platform.contracts.create(
-            dashpayDocumentSchema, ctx.identity,
+            xazabDocumentSchema, ctx.identity,
           );
 
           await ctx.client.platform.contracts.broadcast(
@@ -177,7 +177,7 @@ function initTaskFactory(
           );
 
           // eslint-disable-next-line no-param-reassign
-          task.output = `Dashpay contract ID: ${ctx.dataContract.getId()}`;
+          task.output = `Xazab contract ID: ${ctx.dataContract.getId()}`;
         },
         options: { persistentOutput: true },
       },

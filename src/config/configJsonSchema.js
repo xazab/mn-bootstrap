@@ -229,7 +229,7 @@ module.exports = {
               additionalProperties: false,
               required: ['docker', 'log'],
             },
-            tenderdash: {
+            tenderxazab: {
               properties: {
                 docker: {
                   $ref: '#/definitions/docker/properties/docker',
@@ -292,7 +292,7 @@ module.exports = {
               type: 'boolean',
             },
           },
-          required: ['mongodb', 'abci', 'tenderdash', 'skipAssetLockConfirmationValidation'],
+          required: ['mongodb', 'abci', 'tenderxazab', 'skipAssetLockConfirmationValidation'],
           additionalProperties: false,
         },
         dpns: {

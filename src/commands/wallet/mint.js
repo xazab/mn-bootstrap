@@ -28,12 +28,12 @@ class MintCommand extends BaseCommand {
     const network = config.get('network');
 
     if (network !== NETWORKS.LOCAL) {
-      throw new Error('Only local network supports generation of dash');
+      throw new Error('Only local network supports generation of xazab');
     }
 
     const tasks = new Listr([
       {
-        title: `Generate ${amount} dash to address`,
+        title: `Generate ${amount} xazab to address`,
         task: () => generateToAddressTask(config, amount),
       },
     ],
@@ -56,9 +56,9 @@ class MintCommand extends BaseCommand {
   }
 }
 
-MintCommand.description = `Mint dash
+MintCommand.description = `Mint xazab
 ...
-Mint specified amount of dash to a new address or specified one
+Mint specified amount of xazab to a new address or specified one
 `;
 
 MintCommand.flags = {
@@ -69,7 +69,7 @@ MintCommand.flags = {
 MintCommand.args = [{
   name: 'amount',
   required: true,
-  description: 'amount of dash to be generated to address',
+  description: 'amount of xazab to be generated to address',
   parse: (input) => parseInt(input, 10),
 }];
 

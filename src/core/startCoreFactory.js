@@ -32,7 +32,7 @@ function startCoreFactory(
     // Run Core service
 
     const coreCommand = [
-      'dashd',
+      'xazabd',
     ];
 
     if (options.wallet) {

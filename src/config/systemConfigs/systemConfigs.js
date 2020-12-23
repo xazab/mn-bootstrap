@@ -6,7 +6,7 @@ const baseConfig = {
   description: 'base config for use as template',
   core: {
     docker: {
-      image: 'dashpay/dashd-develop:latest',
+      image: 'xazab/xazabd-develop:latest',
     },
     p2p: {
       port: 20001,
@@ -14,7 +14,7 @@ const baseConfig = {
     },
     rpc: {
       port: 20002,
-      user: 'dashrpc',
+      user: 'xazabrpc',
       password: 'rpcpassword',
     },
     spork: {
@@ -59,12 +59,12 @@ const baseConfig = {
       },
       api: {
         docker: {
-          image: 'dashpay/dapi:0.17-dev',
+          image: 'xazab/dapi:0.17-dev',
         },
       },
       insight: {
         docker: {
-          image: 'dashpay/insight-api:3.1.1',
+          image: 'xazab/insight-api:3.1.1',
         },
       },
     },
@@ -76,15 +76,15 @@ const baseConfig = {
       },
       abci: {
         docker: {
-          image: 'dashpay/drive:0.17-dev',
+          image: 'xazab/drive:0.17-dev',
         },
         log: {
           level: 'info',
         },
       },
-      tenderdash: {
+      tenderxazab: {
         docker: {
-          image: 'dashpay/tenderdash',
+          image: 'xazab/tenderxazab',
         },
         p2p: {
           port: 26656,
@@ -145,28 +145,28 @@ module.exports = {
     description: 'node with Evonet configuration',
     core: {
       docker: {
-        image: 'dashpay/dashd:0.16',
+        image: 'xazab/xazabd:0.16',
       },
       p2p: {
         seeds: [
           {
-            host: 'seed-1.evonet.networks.dash.org',
+            host: 'seed-1.evonet.xazab.xyz',
             port: 20001,
           },
           {
-            host: 'seed-2.evonet.networks.dash.org',
+            host: 'seed-2.evonet.xazab.xyz',
             port: 20001,
           },
           {
-            host: 'seed-3.evonet.networks.dash.org',
+            host: 'seed-3.evonet.xazab.xyz',
             port: 20001,
           },
           {
-            host: 'seed-4.evonet.networks.dash.org',
+            host: 'seed-4.evonet.xazab.xyz',
             port: 20001,
           },
           {
-            host: 'seed-5.evonet.networks.dash.org',
+            host: 'seed-5.evonet.xazab.xyz',
             port: 20001,
           },
         ],
@@ -185,7 +185,7 @@ module.exports = {
         ownerId: 'Gxiu28Lzfj66aPBCxD7AgTbbauLf68jFLNibWGU39Fuh',
       },
       drive: {
-        tenderdash: {
+        tenderxazab: {
           p2p: {
             persistentPeers: [
               {
@@ -437,7 +437,7 @@ module.exports = {
           },
           genesis: {
             genesis_time: '2020-10-29T14:54:55.243362093Z',
-            chain_id: 'dash-devnet-evonet-8',
+            chain_id: 'xazab-devnet-evonet-8',
             consensus_params: {
               block: {
                 max_bytes: '22020096',
@@ -916,10 +916,10 @@ module.exports = {
     description: 'node with testnet configuration',
     core: {
       p2p: {
-        port: 19999,
+        port: 29999,
       },
       rpc: {
-        port: 19998,
+        port: 41414,
       },
     },
     network: NETWORKS.TESTNET,

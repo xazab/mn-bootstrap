@@ -1,7 +1,7 @@
 {
-  "name": "@dashevo/mn-bootstrap",
+  "name": "@xazab/mn-bootstrap",
   "version": "0.17.0-dev.16",
-  "description": "Distribution package for Dash Masternode installation",
+  "description": "Distribution package for Xazab Masternode installation",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dashevo/mn-bootstrap.git"
+    "url": "git+https://github.com/xazab/mn-bootstrap.git"
   },
   "bin": {
     "mn": "bin/mn"
@@ -44,15 +44,15 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dashevo/mn-bootstrap/issues"
+    "url": "https://github.com/xazab/mn-bootstrap/issues"
   },
-  "homepage": "https://github.com/dashevo/mn-bootstrap#readme",
+  "homepage": "https://github.com/xazab/mn-bootstrap#readme",
   "dependencies": {
-    "@dashevo/dashcore-lib": "~0.19.12",
-    "@dashevo/dashd-rpc": "~2.0.2",
-    "@dashevo/dashpay-contract": "^1.0.0",
-    "@dashevo/dpns-contract": "~0.3.0-dev.6",
-    "@dashevo/wallet-lib": "~7.17.0-dev.4",
+    "@xazab/xazabcore-lib": "~0.19.12",
+    "@xazab/xazabd-rpc": "~2.0.2",
+    "@xazab/xazabpay-contract": "^1.0.0",
+    "@xazab/dpns-contract": "~0.3.0-dev.6",
+    "@xazab/wallet-lib": "~7.17.0-dev.4",
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.15.1",
     "@oclif/plugin-help": "^2.2.3",

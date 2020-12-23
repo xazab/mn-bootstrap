@@ -20,7 +20,7 @@ class SetupForLocalDevelopmentCommand extends BaseCommand {
    * @param {DockerCompose} dockerCompose
    * @param {renderServiceTemplates} renderServiceTemplates
    * @param {writeServiceConfigs} writeServiceConfigs
-   * @param {initializeTenderdashNode} initializeTenderdashNode
+   * @param {initializeTenderxazabNode} initializeTenderxazabNode
    * @param {Config} config
    * @return {Promise<void>}
    */
@@ -39,7 +39,7 @@ class SetupForLocalDevelopmentCommand extends BaseCommand {
     dockerCompose,
     renderServiceTemplates,
     writeServiceConfigs,
-    initializeTenderdashNode,
+    initializeTenderxazabNode,
     config,
   ) {
     if (config.get('network') !== NETWORKS.LOCAL) {
@@ -54,7 +54,7 @@ class SetupForLocalDevelopmentCommand extends BaseCommand {
           title: 'Setup masternode for local development',
           task: () => new Listr([
             {
-              title: `Generate ${amount} dash to address`,
+              title: `Generate ${amount} xazab to address`,
               task: () => generateToAddressTask(config, amount),
             },
             {
@@ -62,16 +62,16 @@ class SetupForLocalDevelopmentCommand extends BaseCommand {
               task: () => registerMasternodeTask(config),
             },
             {
-              title: 'Initialize Tenderdash',
+              title: 'Initialize Tenderxazab',
               task: async () => {
-                const [validatorKey, nodeKey, genesis] = await initializeTenderdashNode(config);
+                const [validatorKey, nodeKey, genesis] = await initializeTenderxazabNode(config);
 
-                config.set('platform.drive.tenderdash.validatorKey', validatorKey);
-                config.set('platform.drive.tenderdash.nodeKey', nodeKey);
+                config.set('platform.drive.tenderxazab.validatorKey', validatorKey);
+                config.set('platform.drive.tenderxazab.nodeKey', nodeKey);
 
                 genesis.initial_core_chain_locked_height = 1000;
 
-                config.set('platform.drive.tenderdash.genesis', genesis);
+                config.set('platform.drive.tenderxazab.genesis', genesis);
 
                 const configFiles = renderServiceTemplates(config);
                 writeServiceConfigs(config.getName(), configFiles);
@@ -129,7 +129,7 @@ class SetupForLocalDevelopmentCommand extends BaseCommand {
 
 SetupForLocalDevelopmentCommand.description = `Setup for development
 
-Generate some dash, register masternode and populate node with data required for local development
+Generate some xazab, register masternode and populate node with data required for local development
 `;
 
 SetupForLocalDevelopmentCommand.flags = {

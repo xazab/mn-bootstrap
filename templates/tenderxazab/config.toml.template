@@ -178,13 +178,13 @@ laddr = "tcp://0.0.0.0:26656"
 # If empty, will use the same port as the laddr,
 # and will introspect on the listener or use UPnP
 # to figure out the address.
-external_address = "{{? it.externalIp}}{{=it.externalIp}}:{{=it.platform.drive.tenderdash.p2p.port}}{{?}}"
+external_address = "{{? it.externalIp}}{{=it.externalIp}}:{{=it.platform.drive.tenderxazab.p2p.port}}{{?}}"
 
 # Comma separated list of seed nodes to connect to
 seeds = ""
 
 # Comma separated list of nodes to keep persistent connections to
-persistent_peers = "{{~it.platform.drive.tenderdash.p2p.persistentPeers :peer:index}}{{? index }},{{?}}{{=peer.id}}@{{=peer.host}}:{{=peer.port}}{{~}}"
+persistent_peers = "{{~it.platform.drive.tenderxazab.p2p.persistentPeers :peer:index}}{{? index }},{{?}}{{=peer.id}}@{{=peer.host}}:{{=peer.port}}{{~}}"
 
 # UPNP port forwarding
 upnp = false
